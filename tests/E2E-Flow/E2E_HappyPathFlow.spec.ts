@@ -59,7 +59,3 @@ test('E2E-Happy path flow', async({page})=>{
         });
 
 });
-
-test.afterAll('Tear Down',async({page})=>{
-        await page.close();
-});
