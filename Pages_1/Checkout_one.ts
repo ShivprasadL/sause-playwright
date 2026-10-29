@@ -14,7 +14,7 @@ export class Checkout_one{
         this.firstNameInput=page.locator('#first-name');
         this.lastNameInput=page.getByPlaceholder('Last Name');
         this.zipCodeInput=page.getByLabel('Zip/Postal Code');
-        this.continueBtn=page.locator('.continue');
+        this.continueBtn=page.locator('#continue');
     }
 
     async enterDetails(firstName:string, lastName:string,zipCode:string){
