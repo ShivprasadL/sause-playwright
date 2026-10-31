@@ -1,5 +1,5 @@
 import {test as setup, expect} from '@playwright/test';
-import end_users from '../E2E_JSON_users/end_users.json';
+import end_users from './test-data/end_users.json';
 
 const authFile='playwright/.auth/user.json';
 

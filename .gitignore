@@ -6,3 +6,12 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/0_NoPOM
+/1_E2E-Flow
+/1_E2E-Flow/auth.setup.ts
+/2_E2E_JSON_users
+/2_E2E_JSON_users/auth.setup.ts
+/3_E2E_JSON_checkoutUsers
+/3_E2E_JSON_checkoutUsers/auth.setup.ts
+/4_E2E_variables_testFile
+
