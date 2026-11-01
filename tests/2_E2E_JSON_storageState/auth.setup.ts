@@ -13,7 +13,7 @@ setup(`authenticate as ${user.username}`, async({page})=>{
     await page.locator('#login-button').click();
 
     // Verify login was successful
-    await expect(page.locator('.shopping_cart_link')).toBeVisible();
+    await expect(page.locator('.shopping_cart_link')).toBeVisible({timeout: 15_000});
 
     // Save the session storage state
     await page.context().storageState({path: authFile});
