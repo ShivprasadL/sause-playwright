@@ -28,12 +28,13 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
     - name: Upload blob report
-    - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
+      uses: actions/upload-artifact@v4
       with:
-      name: blob-report-shard-${{ matrix.shardIndex }}
+        name: blob-report-shard-${{ matrix.shardIndex }}
         path: blob-report/
         retention-days: 1
         # name: playwright-report
