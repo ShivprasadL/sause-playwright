@@ -5,7 +5,6 @@ import {Checkout_one } from '../../Pages_1/Checkout_one';
 import {Checkout_two } from '../../Pages_1/Checkout_two';
 import {Checkout_complete } from '../../Pages_1/Checkout_complete';
 
-
 test('E2E-Happy path flow', async({page})=>{
     const inventoryPage= new InventoryPage(page);
     const cartpage=new CartPage(page);
@@ -57,5 +56,4 @@ test('E2E-Happy path flow', async({page})=>{
         expect(failure).toBeNull();
         expect(download.suggestedFilename()).toContain('.pdf');    
         });
-
 });

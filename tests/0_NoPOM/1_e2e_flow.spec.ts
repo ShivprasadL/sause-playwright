@@ -37,6 +37,7 @@ test('verify E2E functionality flow', async({page})=>{
     await page.getByPlaceholder('Last Name').fill('Doe');
     await page.getByLabel('Zip/Postal Code').fill('123456');
     await page.locator('[data-test="continue"]').click();
+    await page.waitForURL('**/checkout-step-two.html');
    
     //overview
     await expect(page.locator('[data-test="title"]')).toHaveText('Checkout: Overview');
