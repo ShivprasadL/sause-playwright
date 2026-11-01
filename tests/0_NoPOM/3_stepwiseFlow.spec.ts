@@ -27,6 +27,7 @@ test('E2E Order Checkout Journey', async ({ page }) => {
     await page.getByPlaceholder('Last Name').fill('Doe');
     await page.getByLabel('Zip/Postal Code').fill('123456');
     await page.locator('[data-test="continue"]').click();
+    await page.waitForURL('**/checkout-step-two.html'); //flaky test
   });
 
   await test.step('4. Verify summary and place order', async () => {

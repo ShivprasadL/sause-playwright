@@ -18,6 +18,7 @@ export class Checkout_two{
     }
 
     async verifyPageLoaded(){
+        await this.page.waitForURL('**/checkout-step-two.html');
         await expect(this.checkoutTwo_title).toHaveText(Checkout_two.EXPECTED_TITLE);
     }
 
