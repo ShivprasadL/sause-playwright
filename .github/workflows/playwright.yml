@@ -9,34 +9,52 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        # GitHub spawns 3 VMs at the exact same second:
-        shardIndex: [1, 2, 3]
-        shardTotal: [3]
+    # --- SHARDING CONFIGURATION (DISABLED) ---
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     # GitHub spawns 3 VMs at the exact same second:
+    #     shardIndex: [1, 2, 3]
+    #     shardTotal: [3]
 
     steps:
     - uses: actions/checkout@v4
-    - name: Run Shard
-      run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
+    # --- ACCIDENTAL DUPLICATE RUN STEP (DISABLED) ---
+    # - name: Run Shard
+    #   run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+        cache: 'npm'
+
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
-    - name: Upload blob report
+    # Standard run without sharding
+    - name: Run Playwright tests
+      run: npx playwright test
+      # --- SHARD RUN (DISABLED) ---
+      # run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
+    # Standard HTML report upload
+    - name: Upload HTML report
       if: ${{ !cancelled() }}
       uses: actions/upload-artifact@v4
       with:
-        name: blob-report-shard-${{ matrix.shardIndex }}
-        path: blob-report/
-        retention-days: 1
-        # name: playwright-report
-        # path: playwright-report/
-        # retention-days: 30
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
+
+    # --- BLOB REPORT UPLOAD (DISABLED: ONLY NEEDED FOR MERGING SHARDS) ---
+    # - name: Upload blob report
+    #   if: ${{ !cancelled() }}
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: blob-report-shard-${{ matrix.shardIndex }}
+    #     path: blob-report/
+    #     retention-days: 1
