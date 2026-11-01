@@ -7,15 +7,16 @@ import {Checkout_complete } from '../../Pages_1/Checkout_complete';
 
 import userData from './test-data/checkoutUser.json'; // 1. Import JSON data';
 
+//string variables
 const TEST_ITEM ='Test.allTheThings() T-Shirt (Red)';
 const TEST_ITEM_PRICE='$15.99';
 
+//string messages
 const CART_PAGE_TITLE='Your Cart';
 const CHECKOUT_ONE_TITLE='Checkout: Your Information';
 const CHECKOUT_TWO_TITLE='Checkout: Overview';
 const SUCCESS_HEADER='Thank you for your order!';
 const SUCCESS_TEXT='Your order has been dispatched, and will arrive just as fast as the pony can get there!';
-
 
 test('E2E-Happy path flow', async({page})=>{
     const inventoryPage= new InventoryPage(page);

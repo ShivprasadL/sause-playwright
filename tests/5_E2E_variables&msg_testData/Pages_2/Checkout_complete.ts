@@ -30,5 +30,4 @@ export class Checkout_complete{
         await expect(this.successText).toHaveText(Checkout_complete.EXPECTED_SUCCESS_TEXT);
     }
 
-
 }

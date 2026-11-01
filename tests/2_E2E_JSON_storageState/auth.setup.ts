@@ -3,11 +3,13 @@ import end_users from './end_users.json';
 
 const authFile='playwright/.auth/user.json';
 
+//const user=end_users[4];
+
 for (const user of end_users) {
 setup(`authenticate as ${user.username}`, async({page})=>{
     page.goto('https://www.saucedemo.com/');
-    await page.getByPlaceholder('Username').fill('standard_user');
-    await page.getByPlaceholder('Password').fill('secret_sauce');
+    await page.getByPlaceholder('Username').fill(user.username);
+    await page.getByPlaceholder('Password').fill(user.password);
     await page.locator('#login-button').click();
 
     // Verify login was successful
